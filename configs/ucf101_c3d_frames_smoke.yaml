@@ -1,0 +1,37 @@
+experiment_name: ucf101_c3d_frames_smoke
+dataset:
+  name: ucf101_csv_frames
+  root: "E:/UCF101"
+  video_root: "E:/UCF101/UCF-101"
+  frame_root: "E:/UCF101/rgb_frames_preview"
+  train_split: "E:/UCF101/train.csv"
+  val_split: "E:/UCF101/val.csv"
+  test_split: "E:/UCF101/test.csv"
+  num_classes: 101
+  clip_len: 16
+  input_size: 112
+sampler:
+  temporal_uniform: true
+  temporal_sampling_span: 32
+  random_crop_mode: five_point
+  horizontal_flip_prob: 0.5
+  mean_subtraction: true
+model:
+  name: c3d
+  num_classes: 101
+  input_channels: 3
+  clip_len: 16
+  input_size: 112
+scheduler:
+  mode: frame_by_frame
+  min_step: 1
+runtime:
+  device: cuda
+  batch_size: 4
+  num_workers: 0
+  epochs: 1
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  eval_subset: val
+  log_interval: 5
+  output_dir: runs_local/ucf101_c3d_frames_smoke

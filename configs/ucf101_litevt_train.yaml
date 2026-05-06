@@ -1,0 +1,43 @@
+experiment_name: ucf101_litevt_train
+dataset:
+  name: ucf101_csv
+  root: "E:/UCF101"
+  video_root: "E:/UCF101/UCF-101"
+  train_split: "E:/UCF101/train.csv"
+  val_split: "E:/UCF101/val.csv"
+  test_split: "E:/UCF101/test.csv"
+  num_classes: 101
+  clip_len: 16
+  input_size: 112
+sampler:
+  temporal_uniform: true
+  temporal_sampling_span: 32
+  random_crop_mode: five_point
+  horizontal_flip_prob: 0.5
+  mean_subtraction: true
+model:
+  name: litevt
+  num_classes: 101
+  input_channels: 3
+  clip_len: 16
+  input_size: 112
+  embed_dim: 256
+  depth: 4
+  num_heads: 4
+  mlp_ratio: 2.0
+  tubelet_size_t: 2
+  tubelet_size_h: 16
+  tubelet_size_w: 16
+  dropout: 0.1
+scheduler:
+  mode: frame_by_frame
+  min_step: 1
+runtime:
+  device: cuda
+  batch_size: 8
+  num_workers: 2
+  epochs: 20
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  eval_subset: val
+  output_dir: runs_local/ucf101_litevt_train

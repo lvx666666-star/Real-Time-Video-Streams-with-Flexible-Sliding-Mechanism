@@ -1,0 +1,39 @@
+experiment_name: b1_c3d_flex_subset200
+dataset:
+  name: thumos14
+  root: E:/THUMOS14/frames_subset_200
+  annotation_file: data/thumos14/annotations/thumos14_clip_annotations_subset200.json
+  num_classes: 22
+  clip_len: 16
+  input_size: 112
+sampler:
+  temporal_uniform: true
+  temporal_sampling_span: 32
+  random_crop_mode: five_point
+  horizontal_flip_prob: 0.5
+  mean_subtraction: true
+model:
+  name: c3d
+  num_classes: 22
+  num_target_classes: 20
+  input_channels: 3
+  clip_len: 16
+  input_size: 112
+scheduler:
+  mode: flexible
+  background_threshold: 0.95
+  vague_threshold: 12.0
+  gmm_std_factor: 2.5
+  gmm_components: 3
+  gmm_learning_rate: 0.05
+  gmm_background_ratio: 0.7
+  min_step: 1
+runtime:
+  device: cuda
+  batch_size: 8
+  num_workers: 8
+  epochs: 5
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  eval_subset: test
+  output_dir: runs_local/b1_c3d_flex_subset200
