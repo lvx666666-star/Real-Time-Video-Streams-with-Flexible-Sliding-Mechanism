@@ -1,15 +1,24 @@
-# EdgeFlex Reproduction
+# Real-Time Video Streams with Flexible Sliding Mechanism
 
-This workspace reproduces the core scheduling idea from:
+This repository provides the source code and configuration files for the paper:
 
-`Edge Environment-Oriented Action Recognition Framework for Realtime Video Stream with Flexible Sliding Mechanism`
+**Edge Environment-Oriented Action Recognition Framework for Real-Time Video Streams with a Flexible Sliding Mechanism**
 
-and extends it with:
+## Paper Reproduction
 
-- a lightweight video transformer backbone (`LiteVT`)
-- a MAT-inspired clip-level transformer recognizer (`MATClip`)
-- streaming overlap-aware token cache
-- uncertainty-aware vague/background thresholding
+The core reproduction code includes:
+
+- C3D-based clip-level action recognition baseline
+- Frame-by-frame sliding baseline
+- Flexible sliding mechanism
+- GMM-based background-window skipping
+- Inter-frame-difference-based vague-window skipping
+- Streaming evaluation scripts
+- Threshold sensitivity and robustness analysis scripts
+
+## Additional Experimental Modules
+
+This repository also includes optional experimental extensions, such as LiteVT, MATClip, token cache, and uncertainty-aware thresholding. These modules are provided for further exploration and are not the main contribution evaluated in the manuscript.
 
 The project keeps the paper's scheduling skeleton unchanged:
 
